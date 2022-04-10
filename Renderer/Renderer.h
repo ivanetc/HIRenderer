@@ -7,10 +7,12 @@
 
 
 #include "RenderParams.h"
+#include "../Scene/Scene.h"
+#include "../Cameras/Camera.h"
 
 class Renderer {
 public:
-    virtual void Render(Scene, Camera, RenderParams)
+    virtual void Render(Scene, Camera, RenderParams);
 };
 
 
