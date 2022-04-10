@@ -25,6 +25,10 @@ public:
     void rotate(double, double, double );
     bool operator==(Vec3);
     void operator=(Vec3);
+
+    float getX() const;
+    float getY() const;
+    float getZ() const;
 };
 
 
