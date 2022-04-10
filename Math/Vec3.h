@@ -5,7 +5,7 @@
 #ifndef HIRENDER_VEC3_H
 #define HIRENDER_VEC3_H
 
-
+// make getter for x, y, z
 class Vec3 {
     float x;
     float y;
@@ -13,18 +13,12 @@ class Vec3 {
 
 public:
     Vec3(float x, float y, float z) : x(x), y(y), z(z) {};
-    Vec3 operator+(Vec3 &a){
-        return *new Vec3(x+a.x,y+a.y,z+a.z);
-    }
-    Vec3 operator-(Vec3 &a){
-        return *new Vec3(x-a.x, y-a.y,z-a.z);
-    }
-    Vec3 operator*(Vec3 &a){
-        return *new Vec3(x*a.x, y*a.y, z*a.z);
-    }
-    void rotate(double, double, double );
-    bool operator==(Vec3);
-    void operator=(Vec3);
+    Vec3 operator+(Vec3 &a) const;
+    Vec3 operator-(Vec3 &a) const;
+    Vec3 operator*(Vec3 &a) const;
+    Vec3 operator-() const;
+    bool operator==(Vec3 a) const;
+    Vec3& operator=(Vec3 a);
 };
 
 
