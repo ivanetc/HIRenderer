@@ -37,11 +37,36 @@ void operator_multiply_test() {
     assert(result_vec.getZ() == 120);
 }
 
+void operator_negative_test(){
+    Vec3 vec = Vec3(5,5,5);
+    Vec3 result_vec = -vec;
+    assert(result_vec.getX() == -5);
+    assert(result_vec.getY() == -5);
+    assert(result_vec.getZ() == -5);
+}
+
+void bool_test(){
+    Vec3 original_vec = Vec3(1,2,3);
+    Vec3 vec1 = original_vec;
+    Vec3 vec2 = original_vec;
+    assert(vec1.getX() == vec2.getX());
+    assert(vec1.getY() == vec2.getY());
+    assert(vec1.getZ() == vec2.getZ());
+    assert(vec1 == vec2);
+    assert(original_vec == vec1);
+    assert(original_vec == vec2);
+
+    std::cout << "Vec3OperatorsTests: bool_test completed" << std::endl;
+
+}
+
 int main() {
 
     operator_minus_test();
     operator_plus_test();
     operator_multiply_test();
+    operator_negative_test();
+    bool_test();
     std::cout << "Vec3OperatorsTests: tests completed successfully!" << std::endl;
 
     return 0;
