@@ -13,9 +13,15 @@ class Vec3 {
 
 public:
     Vec3(float x, float y, float z) : x(x), y(y), z(z) {};
-    Vec3 operator+(Vec3);
-    Vec3 operator-(Vec3);
-    Vec3 operator*(Vec3);
+    Vec3 operator+(Vec3 &a){
+        return *new Vec3(x+a.x,y+a.y,z+a.z);
+    }
+    Vec3 operator-(Vec3 &a){
+        return *new Vec3(x-a.x, y-a.y,z-a.z);
+    }
+    Vec3 operator*(Vec3 &a){
+        return *new Vec3(x*a.x, y*a.y, z*a.z);
+    }
     void rotate(double, double, double );
     bool operator==(Vec3);
     void operator=(Vec3);
