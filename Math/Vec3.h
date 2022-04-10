@@ -5,7 +5,7 @@
 #ifndef HIRENDER_VEC3_H
 #define HIRENDER_VEC3_H
 
-// make getter for x, y, z
+
 class Vec3 {
     float x;
     float y;
@@ -19,6 +19,9 @@ public:
     Vec3 operator-() const;
     bool operator==(Vec3 a) const;
     Vec3& operator=(Vec3 a);
+    float getX() const;
+    float getY() const;
+    float getZ() const;
 };
 
 

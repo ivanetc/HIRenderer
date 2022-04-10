@@ -5,7 +5,7 @@
 #include "Vec3.h"
 
 Vec3 Vec3::operator+(Vec3 &a) const {
-    return {y+a.y,x+a.x,z+a.z};
+    return {x+a.x, y+a.y, z+a.z};
 }
 
 Vec3 Vec3::operator-(Vec3 &a) const {
@@ -28,10 +28,20 @@ bool Vec3::operator==(Vec3 a) const {
     }
 }
 
-
-
 Vec3& Vec3::operator=(Vec3 a){
     return *this;
+}
+
+float Vec3::getX() const {
+    return this->x;
+}
+
+float Vec3::getY() const {
+    return this->y;
+}
+
+float Vec3::getZ() const {
+    return this->z;
 }
 
 
