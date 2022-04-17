@@ -1,23 +1,21 @@
 //
 // Created by Alexander Ivanets on 10.04.2022.
 //
-
 #include <iostream>
-#include "../Math/Vec3.h"
-#include <cassert>
+#include "../../../Privitives/Primitive.h"
 
-void test1() {
-    int a = 1;
-    int b = 2;
-//    Vec3 * vec3 = new Vec3(1, 1, 1);
-    assert(a + b == 3);
+void get_origin_test() {
+//    auto * primitive = new Primitive();
+//    Point origin = primitive->getOrigin();
+
 }
 
 int main() {
-    test1();
+    get_origin_test();
 
     std::cout << "TempTest1: tests completed successfully!" << std::endl;
 
     return 0;
 }
+
 
