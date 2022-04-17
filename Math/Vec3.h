@@ -7,12 +7,13 @@
 
 
 class Vec3 {
-    float x;
-    float y;
-    float z;
+    float x_;
+    float y_;
+    float z_;
+
 
 public:
-    Vec3(float x, float y, float z) : x(x), y(y), z(z) {};
+    Vec3(float x, float y, float z) : x_(x), y_(y), z_(z) {};
     Vec3 operator+(Vec3 &a) const;
     Vec3 operator-(Vec3 &a) const;
     Vec3 operator*(Vec3 &a) const;
@@ -22,6 +23,7 @@ public:
     float getX() const;
     float getY() const;
     float getZ() const;
+
 };
 
 

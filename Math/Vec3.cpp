@@ -5,23 +5,23 @@
 #include "Vec3.h"
 
 Vec3 Vec3::operator+(Vec3 &a) const {
-    return {x+a.x, y+a.y, z+a.z};
+    return {x_ + a.x_, y_ + a.y_, z_ + a.z_};
 }
 
 Vec3 Vec3::operator-(Vec3 &a) const {
-    return {x-a.x, y-a.y,z-a.z};
+    return {x_ - a.x_, y_ - a.y_, z_ - a.z_};
 }
 
 Vec3 Vec3::operator*(Vec3 &a) const {
-    return {x*a.x, y*a.y, z*a.z};
+    return {x_ * a.x_, y_ * a.y_, z_ * a.z_};
 }
 
 Vec3 Vec3::operator-() const{
-    return {-x,-y,-z};
+    return {-x_, -y_, -z_};
 }
 
 bool Vec3::operator==(Vec3 a) const {
-    if(x == a.x, y == a.y, z == a.z){
+    if(x_ == a.x_, y_ == a.y_, z_ == a.z_){
         return true;
     } else{
         return false;
@@ -29,19 +29,22 @@ bool Vec3::operator==(Vec3 a) const {
 }
 
 Vec3& Vec3::operator=(Vec3 a){
+    x_=a.x_;
+    y_=a.y_;
+    z_=a.z_;
     return *this;
 }
 
 float Vec3::getX() const {
-    return this->x;
+    return this->x_;
 }
 
 float Vec3::getY() const {
-    return this->y;
+    return this->y_;
 }
 
 float Vec3::getZ() const {
-    return this->z;
+    return this->z_;
 }
 
 
