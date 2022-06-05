@@ -2,6 +2,7 @@
 // Created by Alexander Ivanets on 09.04.2022.
 //
 
+#include <cmath>
 #include "Vec3.h"
 
 Vec3 Vec3::operator+(Vec3 &a) const {
@@ -18,6 +19,10 @@ Vec3 Vec3::operator*(Vec3 a) const {
 
 Vec3 Vec3::operator-() const{
     return {-x_, -y_, -z_};
+}
+
+Vec3 Vec3::operator/(float i) const {
+    return {x_/i, y_ / i, x_ / i};
 }
 
 bool Vec3::operator==(Vec3 a) const {
@@ -52,4 +57,7 @@ Vec3 Vec3::operator*(float t) const {
 }
 
 
+double Vec3::length() const {
+    return sqrt(pow(this->x_, 2) + pow(this->y_, 2) + pow(this->z_, 2));
+}
 

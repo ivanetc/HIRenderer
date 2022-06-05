@@ -57,6 +57,12 @@ void bool_test(){
     std::cout << "Vec3OperatorsTest_5: bool_test completed" << std::endl;
 }
 
+void length_test(){
+    Vec3 vec = Vec3(2,4,4);
+    assert(vec.length() == 6);
+    std::cout << "Vec3OperatorsTest_5: length_test completed" << std::endl;
+}
+
 void all_operators_test(){
     Vec3 vec1 = Vec3(1,1,1);
     Vec3 vec2 = Vec3(2,2,2);
@@ -75,6 +81,7 @@ int main() {
     operator_multiply_test();
     operator_negative_test();
     bool_test();
+    length_test();
     all_operators_test();
     std::cout << "Vec3OperatorsTests: tests completed successfully!" << std::endl;
 
