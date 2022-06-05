@@ -31,6 +31,5 @@ void Scene::add(const Primitive& primitive) {
 }
 
 void Scene::add(const Light & light) {
-    //todo
-//    this->lights_.push_back(light);
+    this->lights_.push_back(light)
 }
