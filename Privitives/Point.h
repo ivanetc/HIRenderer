@@ -9,17 +9,20 @@
 #include "../Math/Vec3.h"
 
 class Point {
-    double x_;
-    double y_;
-    double z_;
+    float x_;
+    float y_;
+    float z_;
 
 public:
-    Point(double x, double y, double z) : x_(x), y_(y), z_(z) {};
+    Point(float x, float y, float z) : x_(x), y_(y), z_(z) {};
 
-    Point operator+(Vec3);
-    Point operator-(Vec3);
-    bool operator==(Point);
+    float getX() const;
+    float getY() const;
+    float getZ() const;
 
+    bool operator==(const Point&) const;
+    bool operator!=(const Point&) const;
+    Vec3 * operator-(const Point&) const;
 };
 
 

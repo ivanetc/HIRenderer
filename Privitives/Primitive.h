@@ -12,10 +12,14 @@
 class Primitive {
     Point origin_;
     Vec3 normal_;
+    Material * material_;
 
 public:
+    Primitive();
+    Point getOrigin() const;
+    Vec3 getNormal() const;
+
     virtual void setMaterial(Material *);
-    void operator=(Primitive);
 };
 
 
