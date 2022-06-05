@@ -68,7 +68,3 @@ Vec3 operator*(int i, const Vec3& n) {
     return (float) i * n;
 }
 
-double Vec3::length() const {
-    return sqrt(pow(this->x_, 2) + pow(this->y_, 2) + pow(this->z_, 2));
-}
-
