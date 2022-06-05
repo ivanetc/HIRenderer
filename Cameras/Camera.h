@@ -6,8 +6,15 @@
 #define HIRENDER_CAMERA_H
 
 
-class Camera {
+#include "../Privitives/Point.h"
 
+class Camera {
+    Point origin_point_;
+    Point lower_left_corner_;
+    Vec3 horizontal_;
+    Vec3 vertical_;
+public:
+    Camera(Point origin, float aspect_ratio, float viewport_height, float focal_length);
 };
 
 
