@@ -14,6 +14,7 @@ add_executable(point_tests_exec tests/Primitives/Point/PointGettersTests.cpp)
 add_executable(point_getters_tests_exec tests/Primitives/Point/PointGettersTests.cpp)
 add_executable(point_operators_tests_exec tests/Primitives/Point/PointOperatorsTests.cpp)
 
+
 enable_testing()
 add_test(temp_tests temp_tests_exec)
 add_test(vec3_operators_tests vec3_operators_tests_exec)
