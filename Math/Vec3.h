@@ -25,7 +25,7 @@ public:
     float getX() const;
     float getY() const;
     float getZ() const;
-    static Vec3 dot(const Vec3 &u, const Vec3 &v);
+    static float dot(const Vec3 &u, const Vec3 &v);
     Vec3(float d);
 };
 
