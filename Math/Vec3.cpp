@@ -68,4 +68,3 @@ Vec3 operator*(int i, const Vec3& n) {
     return (float) i * n;
 }
 
-

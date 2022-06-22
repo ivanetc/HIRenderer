@@ -20,7 +20,6 @@ public:
     Color getColor() const;
     float getActualFlux() const;
     virtual double calcLightness(Point, Vec3) const = 0;
-    virtual ~Light(){}
 };
 
 
