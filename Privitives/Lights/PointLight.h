@@ -11,8 +11,7 @@
 class PointLight : Light {
 public:
     PointLight(Point point, Color color, float flux) : Light(point, color, flux) {}
-    double calcLightness(Point, Vec3) const;
-    ~PointLight(){}
+    double calcLightness(Point, Vec3) const override;
 };
 
 

@@ -13,17 +13,17 @@
 #include "../Privitives/Lights/Light.h"
 
 class Scene {
-    std::vector<Primitive> primitives_;
+    std::vector<Primitive*> primitives_;
     Camera camera_;
-    std::vector<Light> lights_;
+    std::vector<Light*> lights_;
 
 public:
     Scene();
-    std::vector<Primitive> * getPrimitives();
-    void add(const Primitive&);
-    void add(const Light&);
+    std::vector<Primitive*> getPrimitives();
+    void add(Primitive*);
+    void add(Light*);
     Camera * getCamera();
-    std::vector<Light> * getLights();
+    std::vector<Light*> getLights();
     void setCamera(Camera camera);
 };
 
