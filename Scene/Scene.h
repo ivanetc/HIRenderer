@@ -8,7 +8,7 @@
 
 #include <vector>
 #include "../Privitives/Primitive.h"
-#include "stdlib.h"
+//#include <cstdlib>
 #include "../Cameras/Camera.h"
 #include "../Privitives/Lights/Light.h"
 
