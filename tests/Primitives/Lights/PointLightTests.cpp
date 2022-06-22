@@ -2,6 +2,7 @@
 // Created by Alexander Ivanets on 05.06.2022.
 //
 #include <iostream>
+#include <cassert>
 #include "../../../Privitives/Lights/Light.h"
 #include "../../../Privitives/Lights/PointLight.h"
 #include "../../../Privitives/Lights/PointLight.cpp"
@@ -17,8 +18,11 @@ void test_lightness_calc() {
     PointLight point_light = PointLight(light_origin, color, 100);
     Point target = {0, 0, 0};
     Vec3 normal = {0, 1, 0};
+    std::cout << point_light.calcLightness(target, normal) << std::endl;
 
-    assert(point_light.calcLightness(target, normal) == 0.541456);
+    double testValue = point_light.calcLightness(target, normal);
+    double ceiledValue = std::floor(testValue * 1000000.0) / 1000000.0;
+    assert(ceiledValue == 0.541456);
     std::cout << "PointLightTests: test_lightness_calc passed " << std::endl;
 
 }
