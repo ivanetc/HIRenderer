@@ -7,7 +7,6 @@
 
 
 class Vec3 {
-
     float x_;
     float y_;
     float z_;
