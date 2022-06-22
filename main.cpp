@@ -8,9 +8,9 @@
 
 int main() {
     Scene scene = Scene();
-    auto sphereMaterial = Material(Color(150, 0, 24));
-    auto * sphere = new Sphere(Point(0, 0, -5), sphereMaterial, 1);
-    auto * light = new PointLight(Point(0, 3, -2), Color(255, 255, 255), 200);
+    auto sphereMaterial = Material(Color(50, 20, 180));
+    auto * sphere = new Sphere(Point(-10, 0, 0), sphereMaterial, 3);
+    auto * light = new PointLight(Point(-3, -3, 0), Color(255, 255, 255), 300);
     scene.add(light);
     scene.add(sphere);
 
