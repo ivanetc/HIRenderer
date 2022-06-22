@@ -24,28 +24,11 @@ void test3(){
     assert(a * b == 25);
 }
 
-void test4(){
-    int a = 10;
-    assert(a + NULL == 10);
-}
-
-void test5(){
-    int a = 10;
-    assert(a * NULL == 0);
-}
-
-void test6(){
-    int a = 11;
-    assert(a - NULL == 11);
-}
 
 int main() {
     test1();
     test2();
     test3();
-    test4();
-    test5();
-    test6();
     std::cout << "TempTest1: tests completed successfully!" << std::endl;
 
     return 0;
