@@ -26,6 +26,8 @@ public:
     Vec3 * operator-(const Point&) const;
     Point operator+(const Vec3&) const;
     Point operator-(const Vec3&) const;
+
+    bool isCloserToOrigin(Point origin, Point other) const;
 };
 
 

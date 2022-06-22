@@ -11,8 +11,11 @@
 #include "../Cameras/Camera.h"
 
 class Renderer {
+    static std::tuple<Point, Vec3, Primitive*> getIntersection(Scene &scene, const Camera &camera, const Ray &ray);
 public:
-    virtual void Render(Scene, Camera, RenderParams);
+    static std::vector< std::vector<Color> > Render(Scene, Camera);
+
+    static Color getRayPixelColor(Scene &scene, const Camera &camera, const Ray &ray) ;
 };
 
 

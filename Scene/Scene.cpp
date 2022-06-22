@@ -13,16 +13,8 @@ std::vector<Primitive*> Scene::getPrimitives() {
     return  primitives_;
 }
 
-Camera *Scene::getCamera() {
-    return & camera_;
-}
-
 std::vector<Light*> Scene::getLights() {
     return lights_;
-}
-
-void Scene::setCamera(Camera camera) {
-    camera_ = camera;
 }
 
 void Scene::add(Primitive* primitive) {
@@ -31,6 +23,5 @@ void Scene::add(Primitive* primitive) {
 }
 
 void Scene::add(Light* light) {
-    //todo
     this->lights_.push_back(light);
 }

@@ -20,7 +20,10 @@ class Camera {
 public:
     Camera();
     Camera(Point origin, float aspect_ratio, int image_width, float focal_length);
-    std::vector<Ray> getRays();
+    std::vector< std::vector <Ray>> getRays();
+    int getImageHeight() const;
+    int getImageWidth() const;
+    Point getOrigin() const;
 };
 
 

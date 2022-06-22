@@ -3,3 +3,7 @@
 //
 
 #include "Ray.h"
+
+Ray::Ray() : orig(Point()), dir(Vec3()) {
+
+}

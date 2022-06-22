@@ -12,6 +12,7 @@ class Ray {
 public:
     Point orig;
     Vec3 dir;
+    Ray();
     Ray(const Point& origin, const Vec3 direction) : orig(origin), dir(direction){}
 
     Point origin() const{

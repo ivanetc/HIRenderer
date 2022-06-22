@@ -17,3 +17,13 @@ short Color::getG() const {
 short Color::getB() const {
     return b_;
 }
+
+Color::Color() : r_(0), g_(0), b_(0) {}
+
+Color Color::operator*(double c) const {
+    if (c > 1 || c < 0) {
+        return *this;
+    }
+
+    return {static_cast<short>(this->r_ * c), static_cast<short>(this->g_ * c), static_cast<short>(this->b_ * c)};
+}
