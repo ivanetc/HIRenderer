@@ -1,6 +1,7 @@
 //
 // Created by Egor on 22.06.2022.
 //
+#pragma once
 #include <iostream>
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
@@ -12,7 +13,7 @@
 
 #define CHANNEL_NUM 3
 
-class saver{
+class Saver{
 
 public:
     void save(std::vector<std::vector<Color>> colors) {
