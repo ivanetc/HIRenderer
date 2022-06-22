@@ -33,3 +33,5 @@ std::vector <Ray> Camera::getRays() {
 
     return rays;
 }
+
+Camera::Camera() = default;

@@ -18,6 +18,7 @@ class Camera {
     Vec3 horizontal_;
     Vec3 vertical_;
 public:
+    Camera();
     Camera(Point origin, float aspect_ratio, int image_width, float focal_length);
     std::vector<Ray> getRays();
 };
