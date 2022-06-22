@@ -14,6 +14,7 @@ class Point {
     float z_;
 
 public:
+    Point() : x_(0), y_(0), z_(0) {};
     Point(float x, float y, float z) : x_(x), y_(y), z_(z) {};
 
     float getX() const;
@@ -23,6 +24,8 @@ public:
     bool operator==(const Point&) const;
     bool operator!=(const Point&) const;
     Vec3 * operator-(const Point&) const;
+    Point operator+(const Vec3&) const;
+    Point operator-(const Vec3&) const;
 };
 
 

@@ -6,6 +6,7 @@
 #include <cassert>
 #include "../../../Privitives/Point.h"
 #include "../../../Privitives/Point.cpp"
+#include "../../../Math/Vec3.cpp"
 
 void coordinates_getters() {
     Point point = Point(0, 1, 2);

@@ -30,4 +30,16 @@ Vec3 *Point::operator-(const Point & other) const {
     return new Vec3(x_ - other.getX(), y_ - other.getY(), z_ - other.getZ());
 }
 
+Point Point::operator+(const Vec3 & vec) const {
+    return {
+            this->getX() + vec.getX(),
+            this->getY() + vec.getY(),
+            this->getZ() + vec.getZ()
+    };
+}
+
+Point Point::operator-(const Vec3 & vec) const {
+    return operator+(-vec);
+}
+
 
