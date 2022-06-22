@@ -56,8 +56,16 @@ Vec3 Vec3::operator*(float t) const {
     return {this->x_*t, this->y_*t, this->z_*t};
 }
 
-
 double Vec3::length() const {
     return sqrt(pow(this->x_, 2) + pow(this->y_, 2) + pow(this->z_, 2));
 }
+
+Vec3 operator*(float i, const Vec3& n) {
+    return {i * n.getX(), i * n.getY(), i * n.getZ()};
+}
+
+Vec3 operator*(int i, const Vec3& n) {
+    return (float) i * n;
+}
+
 

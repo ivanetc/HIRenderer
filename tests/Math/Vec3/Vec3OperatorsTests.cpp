@@ -63,6 +63,24 @@ void length_test(){
     std::cout << "Vec3OperatorsTest_5: length_test completed" << std::endl;
 }
 
+void int_mult_operator_test() {
+    Vec3 vec = Vec3(2,3,4);
+    auto result = 3 * vec;
+    assert(result.getX() == 6);
+    assert(result.getY() == 9);
+    assert(result.getZ() == 12);
+    std::cout << "Vec3OperatorsTest_6: int_mult_operator_test completed" << std::endl;
+}
+
+void float_mult_operator_test() {
+    Vec3 vec = Vec3(2,3,4);
+    auto result = 3.0F * vec;
+    assert(result.getX() == 6);
+    assert(result.getY() == 9);
+    assert(result.getZ() == 12);
+    std::cout << "Vec3OperatorsTest_7: float_mult_operator_test completed" << std::endl;
+}
+
 void all_operators_test(){
     Vec3 vec1 = Vec3(1,1,1);
     Vec3 vec2 = Vec3(2,2,2);
@@ -71,7 +89,7 @@ void all_operators_test(){
     assert(result_vec.getX() == 4);
     assert(result_vec.getY() == 4);
     assert(result_vec.getZ() == 4);
-    std::cout << "Vec3OperatorsTest_6: all_operators_test completed" << std::endl;
+    std::cout << "Vec3OperatorsTest_8: all_operators_test completed" << std::endl;
 }
 
 int main() {
@@ -82,6 +100,8 @@ int main() {
     operator_negative_test();
     bool_test();
     length_test();
+    int_mult_operator_test();
+    float_mult_operator_test();
     all_operators_test();
     std::cout << "Vec3OperatorsTests: tests completed successfully!" << std::endl;
 

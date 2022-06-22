@@ -33,5 +33,6 @@ public:
 };
 
 Vec3 operator*(int i, const Vec3& n);
+Vec3 operator*(float i, const Vec3& n);
 
 #endif //HIRENDER_VEC3_H
