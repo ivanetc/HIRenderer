@@ -6,7 +6,7 @@
 
 
 Camera::Camera(Point origin, float aspect_ratio, int image_width, float focal_length) {
-    float viewport_height = 2.0;
+    float viewport_height = 100.0;
     origin_point_ = origin;
     auto viewport_width = aspect_ratio * viewport_height;
 
@@ -18,8 +18,8 @@ Camera::Camera(Point origin, float aspect_ratio, int image_width, float focal_le
     image_height_ = static_cast<int>(image_width_ / aspect_ratio);
 }
 
-std::vector <Ray> Camera::getRays() {
-    std::vector<Ray> rays;
+std::vector< std::vector <Ray>> Camera::getRays() {
+    std::vector< std::vector <Ray>> rays(this->image_height_, std::vector<Ray>(this->image_width_));
 
     for (int j = image_height_ - 1; j >= 0; --j) {
         for (int i = 0; i < image_width_; ++i) {
@@ -27,11 +27,23 @@ std::vector <Ray> Camera::getRays() {
             float v = float(j) / float(image_height_ - 1);
             Vec3 * dir = lower_left_corner_ + u * horizontal_ + v * vertical_ - origin_point_;
             Ray r = Ray(origin_point_, * dir);
-            rays.push_back(r);
+            rays.at(j).at(i) = r;
         }
     }
 
     return rays;
+}
+
+int Camera::getImageHeight() const {
+    return this->image_height_;
+}
+
+int Camera::getImageWidth() const {
+    return this->image_width_;
+}
+
+Point Camera::getOrigin() const {
+    return this->origin_point_;
 }
 
 Camera::Camera() = default;

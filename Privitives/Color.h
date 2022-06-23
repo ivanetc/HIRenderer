@@ -12,10 +12,13 @@ class Color {
     short b_;
 
 public:
+    Color();
     Color(short, short, short);
     short getR() const;
     short getG() const;
     short getB() const;
+    Color operator*(double c) const;
+    Color operator+(Color c) const;
 };
 
 

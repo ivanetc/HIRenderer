@@ -3,6 +3,7 @@
 //
 
 #include "Color.h"
+#include <algorithm>
 
 Color::Color(short r, short g, short b) : r_(r), g_(g), b_(b) {}
 
@@ -16,4 +17,20 @@ short Color::getG() const {
 
 short Color::getB() const {
     return b_;
+}
+
+Color::Color() : r_(0), g_(0), b_(0) {}
+
+Color Color::operator*(double c) const {
+    if (c < 0) {
+        return {0, 0, 0};
+    }
+
+    return {static_cast<short>(std::min(this->r_ * c, 255.0)),
+            static_cast<short>(std::min(this->g_ * c, 255.0)),
+            static_cast<short>(std::min(this->b_ * c, 255.0))};
+}
+
+Color Color::operator+(Color other) const {
+    return {static_cast<short>(this->r_ + other.r_), static_cast<short>(this->g_ + other.g_), static_cast<short>(this->b_ + other.b_)};
 }

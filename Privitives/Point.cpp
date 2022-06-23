@@ -42,4 +42,16 @@ Point Point::operator-(const Vec3 & vec) const {
     return operator+(-vec);
 }
 
+bool Point::isCloserToOrigin(Point origin, Point other) const {
+    Vec3 * vec1 = *this - origin;
+    Vec3 * vec2 = other - origin;
+
+    bool isCloser = vec1->length() < vec2->length();
+
+    delete vec1;
+    delete vec2;
+
+    return isCloser;
+}
+
 

@@ -14,7 +14,6 @@
 
 class Scene {
     std::vector<Primitive*> primitives_;
-    Camera camera_;
     std::vector<Light*> lights_;
 
 public:
@@ -22,9 +21,7 @@ public:
     std::vector<Primitive*> getPrimitives();
     void add(Primitive*);
     void add(Light*);
-    Camera * getCamera();
     std::vector<Light*> getLights();
-    void setCamera(Camera camera);
 };
 
 

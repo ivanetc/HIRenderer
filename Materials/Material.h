@@ -6,7 +6,15 @@
 #define HIRENDER_MATERIAL_H
 
 
+#include "../Privitives/Color.h"
+
 class Material {
+    Color color_;
+
+public:
+    Material();
+    Material(Color);
+    Color getColor() const;
 
 };
 
