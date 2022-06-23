@@ -11,7 +11,7 @@
 #include "../Cameras/Camera.h"
 
 class Renderer {
-    static std::tuple<Point, Vec3, Primitive*> getIntersection(Scene &scene, const Camera &camera, const Ray &ray);
+    static std::tuple<Point*, Vec3*, Primitive*> getIntersection(Scene &scene, const Camera &camera, const Ray &ray);
 public:
     static std::vector< std::vector<Color> > Render(Scene, Camera);
 

@@ -3,6 +3,8 @@
 //
 
 #include "Renderer.h"
+#include <iostream>
+
 
 std::vector< std::vector<Color> > Renderer::Render(Scene scene, Camera camera) {
     auto rays = camera.getRays();
@@ -27,43 +29,50 @@ Color Renderer::getRayPixelColor(Scene &scene, const Camera &camera, const Ray &
     Color currentPixelColor;
 
     auto [intersectionPoint, intersectionPointNormal, closestPrimitive] = getIntersection(scene, camera, ray);
-    if (closestPrimitive != nullptr) {
-        Light * mainLight = scene.getLights().at(1);
+    if (intersectionPoint != nullptr) {
+        Light * mainLight = scene.getLights().at(0);
 
         // check light ray intersection with other primitives
         Point mainLightOrigin = mainLight->getOriginalPoint();
-        Vec3 * rayFromLightDir = mainLightOrigin - intersectionPoint;
+        Vec3 * rayFromLightDir = mainLightOrigin - *intersectionPoint;
         Ray rayFromLight = Ray(mainLightOrigin, *rayFromLightDir);
         auto [p, n, intersectedPrimitive] = getIntersection(scene, camera, rayFromLight);
-        if (intersectedPrimitive == closestPrimitive) {
+        if (intersectedPrimitive == closestPrimitive || intersectedPrimitive == nullptr) {
 
             // if our point on primitive, intersected with ray from camera and ray from light
             // we will calculate lightness on it
-            double lightness = mainLight->calcLightness(intersectionPoint, intersectionPointNormal);
+            double lightness = mainLight->calcLightness(*intersectionPoint, *intersectionPointNormal);
+
             currentPixelColor = closestPrimitive->getMaterial().getColor() * lightness;
         }
 
-        delete rayFromLightDir;
+//        delete rayFromLightDir;
     }
+    delete intersectionPoint;
+    delete intersectionPointNormal;
 
     return currentPixelColor;
 }
 
-std::tuple<Point, Vec3, Primitive *> Renderer::getIntersection(Scene &scene, const Camera &camera, const Ray &ray) {
-    Point intersectionPoint = Point();
-    Vec3 intersectionPointNormal = Vec3();
+std::tuple<Point*, Vec3*, Primitive *> Renderer::getIntersection(Scene &scene, const Camera &camera, const Ray &ray) {
+    Point * intersectionPoint = nullptr;
+    Vec3 * intersectionPointNormal = nullptr;
     Primitive * closestPrimitive = nullptr;
 
     for (Primitive* primitive : scene.getPrimitives()) {
         auto [primitiveIntersectionPoint, primitiveNormal] = primitive->hit(ray);
 
-        if (primitiveIntersectionPoint.isCloserToOrigin(camera.getOrigin(), intersectionPoint)
-            || intersectionPoint == camera.getOrigin()
-        ) {
-            intersectionPoint = primitiveIntersectionPoint;
-            intersectionPointNormal = primitiveNormal;
-            closestPrimitive = primitive;
+        if (primitiveIntersectionPoint != nullptr) {
+            if (intersectionPoint == nullptr || primitiveIntersectionPoint->isCloserToOrigin(camera.getOrigin(), *intersectionPoint)) {
+                intersectionPoint = primitiveIntersectionPoint;
+                intersectionPointNormal = primitiveNormal;
+                closestPrimitive = primitive;
+            } else {
+                delete primitiveIntersectionPoint;
+                delete primitiveNormal;
+            }
         }
+
     }
 
     return std::make_tuple(intersectionPoint, intersectionPointNormal, closestPrimitive);

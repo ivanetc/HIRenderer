@@ -11,17 +11,17 @@ static double toRad(double degree) {
 }
 
 static double getAngleCos(Vec3 * vec1, Vec3 * vec2) {
-    float scalarMultiply = vec1->getX() * vec2->getX() + vec1->getY() * vec2->getY() + vec1->getZ() + vec2->getZ();
+    double scalarMultiply = vec1->getX() * vec2->getX() + vec1->getY() * vec2->getY() + vec1->getZ() * vec2->getZ();
     double lengthMultiply = vec1->length() * vec2->length();
     return scalarMultiply / lengthMultiply;
 }
 
 double PointLight::calcLightness(Point point, Vec3 normalVector) const {
-    Vec3 * vecToLight = this->getOriginalPoint() - point;
+    Vec3 * vecToLight = point - this->getOriginalPoint();
 
     double angleCos = getAngleCos(&normalVector, vecToLight);
     double I = this->getActualFlux() / (4 * M_PI);
-    double E = I * angleCos / pow(vecToLight->length(), 2);
+    double E = (I * (1 - angleCos) + I * angleCos)  / pow(vecToLight->length(), 2);
 
     delete vecToLight;
     return E;

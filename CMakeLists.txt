@@ -22,6 +22,7 @@ add_executable(point_getters_tests_exec tests/Primitives/Point/PointGettersTests
 add_executable(point_operators_tests_exec tests/Primitives/Point/PointOperatorsTests.cpp)
 add_executable(lights_exec tests/Primitives/Lights/PointLightTests.cpp)
 add_executable(cameras_exec tests/Cameras/CamerasTests.cpp)
+add_executable(sphere_exec tests/Primitives/SphereTests.cpp)
 
 
 enable_testing()
@@ -31,4 +32,4 @@ add_test(point_tests point_tests_exec)
 add_test(point_getters_tests point_getters_tests_exec)
 add_test(point_operators_tests point_operators_tests_exec)
 add_test(lights_tests lights_exec)
-add_test(camera_tests cameras_exec)
+add_test(sphere_tests sphere_exec)

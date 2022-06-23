@@ -6,7 +6,7 @@
 
 
 Camera::Camera(Point origin, float aspect_ratio, int image_width, float focal_length) {
-    float viewport_height = 2.0;
+    float viewport_height = 100.0;
     origin_point_ = origin;
     auto viewport_width = aspect_ratio * viewport_height;
 

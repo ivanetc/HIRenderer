@@ -24,7 +24,7 @@ public:
 
     Material getMaterial() const;
     void setMaterial(Material);
-    virtual std::tuple<Point, Vec3> hit(const Ray& r) const = 0;
+    virtual std::tuple<Point*, Vec3*> hit(const Ray& r) const = 0;
 };
 
 
