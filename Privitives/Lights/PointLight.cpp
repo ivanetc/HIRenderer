@@ -21,7 +21,7 @@ double PointLight::calcLightness(Point point, Vec3 normalVector) const {
 
     double angleCos = getAngleCos(&normalVector, vecToLight);
     double I = this->getActualFlux() / (4 * M_PI);
-    double E = (I * (1 - angleCos) + I * angleCos)  / pow(vecToLight->length(), 2);
+    double E = I * (1 - angleCos)  / pow(vecToLight->length(), 2);
 
     delete vecToLight;
     return E;
