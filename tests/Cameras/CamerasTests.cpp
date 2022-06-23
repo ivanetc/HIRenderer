@@ -2,6 +2,7 @@
 // Created by Alexander Ivanets on 23.06.2022.
 //
 #include <iostream>
+#include <cassert>
 #include "../../Cameras/Camera.h"
 #include "../../Cameras/Camera.cpp"
 #include "../../Math/Ray.cpp"

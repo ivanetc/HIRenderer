@@ -9,7 +9,7 @@
 #include "../../Math/Vec3.cpp"
 #include "../../Math/Ray.cpp"
 #include "../../Materials/Material.cpp"
-
+#include <cassert>
 void test1();
 void test2();
 
