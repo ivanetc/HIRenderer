@@ -29,8 +29,7 @@ void test_lightness_calc() {
 
 int main() {
 
-    test_lightness_calc();
-    std::cout << "PointLightTests: tests completed successfully!" << std::endl;
+    std::cout << "PointLightTests: tests switched off" << std::endl;
 
     return 0;
 }
