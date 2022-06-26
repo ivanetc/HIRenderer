@@ -21,17 +21,36 @@ std::tuple<Point *, Vec3 *> Plane::hit(const Ray &r) const {
 //            return std::make_tuple(point1, vecResult);
 //        }
 //    }
-    Vec3 N = this->getNormal();
-    auto V = this->getOrigin() - r.origin();
-    // расстояние до плоскости по нормали
-    auto d = Vec3::dot( N, *V );
-    auto e = Vec3::dot( N, r.direction() );
+    Point * point = Plane::getInterception(r);
+    return std::make_tuple(point, new Vec3(this->getNormal()));
+//    Vec3 N = this->getNormal();
+//    auto V = this->getOrigin() - r.origin();
+//    // расстояние до плоскости по нормали
+//    auto d = Vec3::dot( N, *V );
+//    auto e = Vec3::dot( N, r.direction() );
+//
+//    delete V;
+//    if (e < 1e-6) {
+//        //auto p0l0 =
+//       auto * p = new Point(r.origin() + r.direction()  * d / e ); // одна точка
+//        return std::make_tuple(p, new Vec3(N));
+//    } else {
+//        return std::make_tuple(nullptr, nullptr);
+//    }
+}
 
-    delete V;
-    if (e < 0) {
-        auto * p = new Point(r.origin() + r.direction() * d/e); // одна точка
-        return std::make_tuple(p, new Vec3(N));
-    } else {
-        return std::make_tuple(nullptr, nullptr);
-    }
+Point * Plane::getInterception(Ray r) const {
+        Vec3 N = this->getNormal();
+        auto V = this->getOrigin() - r.origin();
+        // расстояние до плоскости по нормали
+        auto d = Vec3::dot( N, *V );
+        auto e = Vec3::dot( N, r.direction() );
+        delete V;
+        if (e < 1e-6) {
+            //auto p0l0 =
+            auto * p = new Point(r.origin() + r.direction()  * d / e ); // одна точка
+            return p;
+        } else {
+            return nullptr;
+        }
 }

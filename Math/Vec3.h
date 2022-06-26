@@ -29,6 +29,7 @@ public:
     float getZ() const;
     static float dot(const Vec3 &u, const Vec3 &v);
     double length() const;
+    Vec3 rotate(float angleX, float angleY, float angleZ);
 };
 
 Vec3 operator*(int i, const Vec3& n);

@@ -60,6 +60,19 @@ double Vec3::length() const {
     return sqrt(pow(this->x_, 2) + pow(this->y_, 2) + pow(this->z_, 2));
 }
 
+Vec3 Vec3::rotate(float angleX, float angleY, float angleZ) {
+    this->y_ = y_ * cos(angleX) + z_ * sin(angleX);
+    this->z_ = -y_ * sin(angleX) + z_ * cos(angleX);
+
+    this->x_ = x_ * cos(angleY) + x_ * sin(angleY);
+    this->z_ = -x_ * sin(angleY) + z_ * cos(angleY);
+
+    this->x_ = x_ * cos(angleZ) - y_ * sin(angleZ);
+    this->y_ = x_ * sin(angleZ) + y_ * cos(angleZ);
+
+    return *this;
+}
+
 Vec3 operator*(float i, const Vec3& n) {
     return {i * n.getX(), i * n.getY(), i * n.getZ()};
 }
