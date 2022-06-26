@@ -17,11 +17,11 @@ static double getAngleCos(Vec3 * vec1, Vec3 * vec2) {
 }
 
 double PointLight::calcLightness(Point point, Vec3 normalVector) const {
-    Vec3 * vecToLight = point - this->getOriginalPoint();
+    Vec3 * vecToLight = this->getOriginalPoint() - point;
 
     double angleCos = getAngleCos(&normalVector, vecToLight);
     double I = this->getActualFlux() / (4 * M_PI);
-    double E = I * (1 - angleCos)  / pow(vecToLight->length(), 2);
+    double E = I * angleCos / pow(vecToLight->length(), 2);
 
     delete vecToLight;
     return E;
