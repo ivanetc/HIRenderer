@@ -1,7 +1,7 @@
 #pragma once
 #include "Scene/Scene.h"
 #include "Privitives/3D/Sphere.h"
-#include "Privitives/3D/Plane.h"
+#include "Privitives/2D/Plane.h"
 #include "Privitives/Lights/PointLight.h"
 #include "Renderer/Renderer.h"
 #include "Renderer/JpegSaver.h"

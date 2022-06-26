@@ -60,17 +60,22 @@ double Vec3::length() const {
     return sqrt(pow(this->x_, 2) + pow(this->y_, 2) + pow(this->z_, 2));
 }
 
-Vec3 Vec3::rotate(float angleX, float angleY, float angleZ) {
-    this->y_ = y_ * cos(angleX) + z_ * sin(angleX);
-    this->z_ = -y_ * sin(angleX) + z_ * cos(angleX);
+Vec3 Vec3::rotate(float angleX, float angleY, float angleZ) const {
+    auto rotatedVector = Vec3(x_, y_, z_);
+    rotatedVector.y_ = rotatedVector.y_ * cos(angleX) + rotatedVector.z_ * sin(angleX);
+    rotatedVector.z_ = -rotatedVector.y_ * sin(angleX) + rotatedVector.z_ * cos(angleX);
 
-    this->x_ = x_ * cos(angleY) + x_ * sin(angleY);
-    this->z_ = -x_ * sin(angleY) + z_ * cos(angleY);
+    rotatedVector.x_ = rotatedVector.x_ * cos(angleY) + rotatedVector.x_ * sin(angleY);
+    rotatedVector.z_ = -rotatedVector.x_ * sin(angleY) + rotatedVector.z_ * cos(angleY);
 
-    this->x_ = x_ * cos(angleZ) - y_ * sin(angleZ);
-    this->y_ = x_ * sin(angleZ) + y_ * cos(angleZ);
+    rotatedVector.x_ = rotatedVector.x_ * cos(angleZ) - rotatedVector.y_ * sin(angleZ);
+    rotatedVector.y_ = rotatedVector.x_ * sin(angleZ) + rotatedVector.y_ * cos(angleZ);
 
-    return *this;
+    return rotatedVector;
+}
+
+Vec3 Vec3::operator*(int t) const {
+    return * this * (float )t;
 }
 
 Vec3 operator*(float i, const Vec3& n) {
