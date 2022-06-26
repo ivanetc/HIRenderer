@@ -9,6 +9,9 @@
 class Plane : public Primitive{
     int x_;
     int y_;
+
+    Point * getInterception(Ray r) const;
+
 public:
     Plane(Point orig, Vec3 norm, Material mat, int x, int y);
     std::tuple<Point*, Vec3*> hit(const Ray& r) const override;
