@@ -49,7 +49,7 @@ float Vec3::getZ() const {
 }
 
 float Vec3::dot(const Vec3 &u, const Vec3 &v) {
-    return u.x_ * v.x_ + u.y_ * v.y_ + u.z_ + v.z_;
+    return u.x_ * v.x_ + u.y_ * v.y_ + u.z_ * v.z_;
 }
 
 Vec3 Vec3::operator*(float t) const {
