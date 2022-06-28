@@ -18,9 +18,9 @@ Point * Plane::getInterception(Vec3 vector, Point vectorOrigin) const {
         auto d = Vec3::dot( N, *V );
         auto e = Vec3::dot( N, vector );
         delete V;
-        if (e < 1e-6) {
+        if (e < 0) {
             //auto p0l0 =
-            auto * p = new Point(vectorOrigin + vector  * d / e ); // одна точка
+            auto * p = new Point(vectorOrigin + vector  * (d / e) ); // одна точка
             return p;
         } else {
             return nullptr;

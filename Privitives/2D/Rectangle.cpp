@@ -4,7 +4,7 @@
 
 #include "Rectangle.h"
 
-Rectangle::Rectangle(Point orig, Vec3 norm, Material mat, int x, int y) : Plane(orig, norm, mat){
+Rectangle::Rectangle(Point orig, Vec3 norm, Material mat, double x, double y) : Plane(orig, norm, mat){
     Vec3 * x_axis = nullptr;
     Vec3 * y_axis = nullptr;
 
@@ -28,8 +28,8 @@ Rectangle::Rectangle(Point orig, Vec3 norm, Material mat, int x, int y) : Plane(
     }
 
     if (x_axis != nullptr && y_axis != nullptr) {
-        x_ = * x_axis * x;
-        y_ = * y_axis * y;
+        x_ = * x_axis * (x / x_axis->length());
+        y_ = * y_axis * (y / y_axis->length());
     } else {
         throw std::exception();
     }

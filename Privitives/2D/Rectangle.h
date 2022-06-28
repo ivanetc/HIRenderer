@@ -12,7 +12,7 @@ class Rectangle : public Plane {
     bool isPointOnRectangle(Point) const;
 
 public:
-    Rectangle(Point orig, Vec3 norm, Material mat, int x, int y);
+    Rectangle(Point orig, Vec3 norm, Material mat, double x, double y);
     std::tuple<Point*, Vec3*> hit(const Ray& r) const override;
 };
 

@@ -20,6 +20,7 @@ public:
     Vec3 operator-(Vec3 a) const;
     Vec3 operator*(Vec3 a) const;
     Vec3 operator*(float t) const;
+    Vec3 operator*(double t) const;
     Vec3 operator*(int t) const;
     Vec3 operator/(float i) const;
     Vec3 operator-() const;

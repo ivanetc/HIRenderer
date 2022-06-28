@@ -5,6 +5,10 @@
 #include <cmath>
 #include "Vec3.h"
 
+float toRadians(float degrees) {
+    return degrees * M_PI / 180.0;
+}
+
 Vec3 Vec3::operator+(Vec3 &a) const {
     return {x_ + a.x_, y_ + a.y_, z_ + a.z_};
 }
@@ -53,7 +57,7 @@ float Vec3::dot(const Vec3 &u, const Vec3 &v) {
 }
 
 Vec3 Vec3::operator*(float t) const {
-    return {this->x_*t, this->y_*t, this->z_*t};
+    return {this->x_ * t, this->y_ * t, this->z_ * t};
 }
 
 double Vec3::length() const {
@@ -61,20 +65,30 @@ double Vec3::length() const {
 }
 
 Vec3 Vec3::rotate(float angleX, float angleY, float angleZ) const {
-    auto rotatedVector = Vec3(x_, y_, z_);
-    rotatedVector.y_ = rotatedVector.y_ * cos(angleX) + rotatedVector.z_ * sin(angleX);
-    rotatedVector.z_ = -rotatedVector.y_ * sin(angleX) + rotatedVector.z_ * cos(angleX);
+    angleX = toRadians(angleX);
+    angleY = toRadians(angleY);
+    angleZ = toRadians(angleZ);
 
-    rotatedVector.x_ = rotatedVector.x_ * cos(angleY) + rotatedVector.x_ * sin(angleY);
-    rotatedVector.z_ = -rotatedVector.x_ * sin(angleY) + rotatedVector.z_ * cos(angleY);
+    auto rotatedVector1 = Vec3(x_, y_, z_);
+    rotatedVector1.y_ = y_ * cos(angleX) + z_ * sin(angleX);
+    rotatedVector1.z_ = -y_ * sin(angleX) + z_ * cos(angleX);
 
-    rotatedVector.x_ = rotatedVector.x_ * cos(angleZ) - rotatedVector.y_ * sin(angleZ);
-    rotatedVector.y_ = rotatedVector.x_ * sin(angleZ) + rotatedVector.y_ * cos(angleZ);
+    auto rotatedVector2 = Vec3(rotatedVector1);
+    rotatedVector2.x_ = rotatedVector1.x_ * cos(angleY) + rotatedVector1.x_ * sin(angleY);
+    rotatedVector2.z_ = -rotatedVector1.x_ * sin(angleY) + rotatedVector1.z_ * cos(angleY);
 
-    return rotatedVector;
+    auto rotatedVector3 = Vec3(rotatedVector2);
+    rotatedVector3.x_ = rotatedVector2.x_ * cos(angleZ) - rotatedVector2.y_ * sin(angleZ);
+    rotatedVector3.y_ = rotatedVector2.x_ * sin(angleZ) + rotatedVector2.y_ * cos(angleZ);
+
+    return rotatedVector3;
 }
 
 Vec3 Vec3::operator*(int t) const {
+    return * this * (float )t;
+}
+
+Vec3 Vec3::operator*(double t) const {
     return * this * (float )t;
 }
 
