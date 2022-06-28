@@ -20,6 +20,8 @@ public:
     Vec3 operator-(Vec3 a) const;
     Vec3 operator*(Vec3 a) const;
     Vec3 operator*(float t) const;
+    Vec3 operator*(double t) const;
+    Vec3 operator*(int t) const;
     Vec3 operator/(float i) const;
     Vec3 operator-() const;
     bool operator==(Vec3 a) const;
@@ -29,7 +31,7 @@ public:
     float getZ() const;
     static float dot(const Vec3 &u, const Vec3 &v);
     double length() const;
-    Vec3 rotate(float angleX, float angleY, float angleZ);
+    Vec3 rotate(float angleX, float angleY, float angleZ) const;
 };
 
 Vec3 operator*(int i, const Vec3& n);

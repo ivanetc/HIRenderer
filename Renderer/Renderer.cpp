@@ -13,7 +13,7 @@ std::vector< std::vector<Color> > Renderer::Render(Scene scene, Camera camera) {
     int imageWidth = camera.getImageWidth();
     std::vector< std::vector<Color> > pixels (imageHeight, std::vector<Color> (imageWidth));
     // static
-    #pragma omp parallel for schedule(dynamic)
+//    #pragma omp parallel for schedule(dynamic)
     for (int i = 0; i < rays.size(); i++)
     {
         for (int j = 0; j < rays.at(i).size(); j++) {
