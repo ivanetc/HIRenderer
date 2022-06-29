@@ -6,8 +6,6 @@
 #include "Sphere.h"
 #ifndef HIRENDER_SPHERE_H
 #define HIRENDER_SPHERE_H
-#include "../../Math/Vec3.h"
-#include "../Point.h"
 
 
 #endif //HIRENDER_SPHERE_H

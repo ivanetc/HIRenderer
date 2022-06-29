@@ -3,6 +3,7 @@
 //
 
 #include "Rectangle.h"
+#include <exception>
 
 Rectangle::Rectangle(Point orig, Vec3 norm, Material mat, double x, double y) : Plane(orig, norm, mat){
     Vec3 * x_axis = nullptr;
@@ -39,23 +40,32 @@ Rectangle::Rectangle(Point orig, Vec3 norm, Material mat, double x, double y) : 
 std::tuple<Point *, Vec3 *> Rectangle::hit(const Ray &r) const {
     Point * point = Plane::getInterception(r.direction(), r.origin());
 
-    if (Rectangle::isPointOnRectangle(*point)) {
-        return std::make_tuple(point, new Vec3(getNormal()));
-    } else {
-        delete point;
-        return std::make_tuple(nullptr, nullptr);
+    if (point != nullptr) {
+        if (Rectangle::isPointOnRectangle(*point)) {
+            return std::make_tuple(point, new Vec3(getNormal()));
+        } else {
+            delete point;
+        }
     }
+    return std::make_tuple(nullptr, nullptr);
 }
 
 bool Rectangle::isPointOnRectangle(Point targetPoint) const {
-    Vec3 * vectorToTarget = targetPoint - getOrigin();
+    Vec3 ab = y_;
+    Vec3 bc = x_;
+    Point b = getOrigin();
+    Vec3 * am = targetPoint - (b - ab);
+    Vec3 * bm = targetPoint - b;
 
-    auto projectionOnX = Vec3::dot(*vectorToTarget, x_) / x_.length();
-    auto projectionOnY = Vec3::dot(*vectorToTarget, y_) / y_.length();
+    auto dotAbAm = Vec3::dot(ab, *am);
+    auto dotAbAb = Vec3::dot(ab, ab);
+    auto dotBcBm = Vec3::dot(bc, *bm);
+    auto dotBcBc = Vec3::dot(bc, bc);
 
-    delete vectorToTarget;
+    delete bm;
+    delete am;
 
-    return projectionOnX <= x_.length() && projectionOnY <= y_.length();
+    return dotAbAm >= 0 && dotAbAm <= dotAbAb && dotBcBm >= 0 && dotBcBm <= dotBcBc;
 }
 
 

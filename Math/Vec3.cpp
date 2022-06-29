@@ -9,6 +9,11 @@ float toRadians(float degrees) {
     return degrees * M_PI / 180.0;
 }
 
+float round(float value, int decimalCount) {
+    auto decimalCountMultiplier = pow(10.0, decimalCount);
+    return round(value * decimalCountMultiplier) / decimalCountMultiplier;
+}
+
 Vec3 Vec3::operator+(Vec3 &a) const {
     return {x_ + a.x_, y_ + a.y_, z_ + a.z_};
 }
@@ -70,16 +75,20 @@ Vec3 Vec3::rotate(float angleX, float angleY, float angleZ) const {
     angleZ = toRadians(angleZ);
 
     auto rotatedVector1 = Vec3(x_, y_, z_);
-    rotatedVector1.y_ = y_ * cos(angleX) + z_ * sin(angleX);
-    rotatedVector1.z_ = -y_ * sin(angleX) + z_ * cos(angleX);
+    rotatedVector1.y_ = y_ * cos(angleX) - z_ * sin(angleX);
+    rotatedVector1.z_ = y_ * sin(angleX) + z_ * cos(angleX);
 
     auto rotatedVector2 = Vec3(rotatedVector1);
-    rotatedVector2.x_ = rotatedVector1.x_ * cos(angleY) + rotatedVector1.x_ * sin(angleY);
-    rotatedVector2.z_ = -rotatedVector1.x_ * sin(angleY) + rotatedVector1.z_ * cos(angleY);
+    rotatedVector2.x_ = rotatedVector1.x_ * cos(angleY) - rotatedVector1.z_ * sin(angleY);
+    rotatedVector2.z_ = rotatedVector1.x_ * sin(angleY) + rotatedVector1.z_ * cos(angleY);
 
     auto rotatedVector3 = Vec3(rotatedVector2);
     rotatedVector3.x_ = rotatedVector2.x_ * cos(angleZ) - rotatedVector2.y_ * sin(angleZ);
     rotatedVector3.y_ = rotatedVector2.x_ * sin(angleZ) + rotatedVector2.y_ * cos(angleZ);
+
+    rotatedVector3.x_ = round(rotatedVector3.x_, 5);
+    rotatedVector3.y_ = round(rotatedVector3.y_, 5);
+    rotatedVector3.z_ = round(rotatedVector3.z_, 5);
 
     return rotatedVector3;
 }
