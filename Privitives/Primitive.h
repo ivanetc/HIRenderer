@@ -15,7 +15,8 @@ class Primitive {
     Point origin_;
     Vec3 normal_;
     Material material_;
-
+protected:
+    void setOrigin(Point);
 public:
     Primitive();
     Primitive(Point, Vec3, Material);

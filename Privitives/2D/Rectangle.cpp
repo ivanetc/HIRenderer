@@ -5,36 +5,8 @@
 #include "Rectangle.h"
 #include <exception>
 
-Rectangle::Rectangle(Point orig, Vec3 norm, Material mat, double x, double y) : Plane(orig, norm, mat){
-    Vec3 * x_axis = nullptr;
-    Vec3 * y_axis = nullptr;
-
-    auto new_axis = getNormal().rotate(90, 0, 0);
-    if (Plane::isPointOnPlane(getOrigin() + new_axis)) {
-        x_axis = new Vec3(new_axis);
-    }
-
-    new_axis = getNormal().rotate(0, 90, 0);
-    if (Plane::isPointOnPlane(getOrigin() + new_axis)) {
-        if (x_axis == nullptr) {
-            x_axis = new Vec3(new_axis);
-        } else {
-            y_axis = new Vec3(new_axis);
-        }
-    }
-
-    new_axis = getNormal().rotate(0, 0, 90);
-    if (Plane::isPointOnPlane(getOrigin() + new_axis)) {
-        y_axis = new Vec3(new_axis);
-    }
-
-    if (x_axis != nullptr && y_axis != nullptr) {
-        x_ = * x_axis * (x / x_axis->length());
-        y_ = * y_axis * (y / y_axis->length());
-    } else {
-        throw std::exception();
-    }
-
+Rectangle::Rectangle(Point orig, Vec3 norm, Material mat, Vec3 x, Vec3 y) : Plane(orig, norm, mat), x_(x), y_(y) {
+    this->setOrigin(getOrigin() - x * 0.5 + y * 0.5);
 }
 
 std::tuple<Point *, Vec3 *> Rectangle::hit(const Ray &r) const {

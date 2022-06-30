@@ -5,18 +5,6 @@
 #include "Box.h"
 #include "vector"
 
-Box::Box(Point origin, Vec3 norm, Material material, float side_size) : Primitive(origin, norm, material) {
-    auto top = Rectangle(origin, norm, material, side_size, side_size);
-    auto bottom = Rectangle(origin - norm, - norm, material, side_size, side_size);
-
-    auto side_norm = norm.rotate(90, 0, 0);
-    auto side1 = Rectangle(origin, side_norm, material, side_size, side_size);
-
-    surfaces_.push_back(top);
-    surfaces_.push_back(bottom);
-    surfaces_.push_back(side1);
-}
-
 std::tuple<Point *, Vec3 *> Box::hit(const Ray &ray) const {
 
     for (const auto& surface: surfaces_) {
@@ -27,4 +15,22 @@ std::tuple<Point *, Vec3 *> Box::hit(const Ray &ray) const {
         }
     }
     return {nullptr, nullptr};
+}
+
+Box::Box(Point origin, Material material, Vec3 x, Vec3 y, Vec3 z)
+    : Primitive(origin, z, material), x_(x), y_(y), z_(z) {
+    auto top = Rectangle(origin + z_ * 0.5, z_, material, x_, y_);
+    auto bottom = Rectangle(origin - z_ * 0.5, -z_, material, x_, y_);
+    auto side1 = Rectangle(origin + x_ * 0.5, x_, material, z_, y_);
+    auto side2 = Rectangle(origin - x_ * 0.5, -x_, material, z_, y_);
+    auto side3 = Rectangle(origin + y_ * 0.5, y_, material, x_, z_);
+    auto side4 = Rectangle(origin - y_ * 0.5, - y_, material, x_, z_);
+
+
+    surfaces_.push_back(top);
+    surfaces_.push_back(bottom);
+    surfaces_.push_back(side1);
+    surfaces_.push_back(side2);
+    surfaces_.push_back(side3);
+    surfaces_.push_back(side4);
 }
