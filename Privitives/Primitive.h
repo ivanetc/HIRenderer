@@ -9,7 +9,7 @@
 
 #include "../Materials/Material.h"
 #include "Point.h"
-#include "../Math/Ray.h"
+#include "../Cameras/Ray/Ray.h"
 
 class Primitive {
     Point origin_;

@@ -6,7 +6,7 @@
 #define HIRENDER_MATERIAL_H
 
 
-#include "../Privitives/Color.h"
+#include "Color.h"
 
 class Material {
     Color color_;

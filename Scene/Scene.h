@@ -9,7 +9,7 @@
 #include <vector>
 #include "../Privitives/Primitive.h"
 //#include <cstdlib>
-#include "../Cameras/Camera.h"
+#include "../Cameras/Camera/Camera.h"
 #include "../Privitives/Lights/Light.h"
 
 class Scene {

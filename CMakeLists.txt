@@ -10,13 +10,13 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(
         HIRender Math/Vec3.cpp Math/Vec3.h Privitives/Point.cpp Privitives/Point.h Privitives/Primitive.cpp
-        Privitives/3D/Sphere.h Privitives/3D/Sphere.cpp Math/Ray.h Math/Ray.cpp
+        Privitives/3D/Sphere.h Privitives/3D/Sphere.cpp Cameras/Ray/Ray.h Cameras/Ray/Ray.cpp
         Privitives/Primitive.h Materials/Material.cpp Materials/Material.h Renderer/Renderer.cpp Renderer/Renderer.h
-        Renderer/RenderParams.cpp Renderer/RenderParams.h Scene/Scene.cpp Scene/Scene.h Cameras/Camera.cpp Cameras/Camera.h
-        Privitives/Lights/Light.cpp Privitives/Lights/Light.h Privitives/Color.cpp Privitives/Color.h Renderer/stb_image_write.h
+        Renderer/RenderParams.cpp Renderer/RenderParams.h Scene/Scene.cpp Scene/Scene.h Cameras/Camera/Camera.cpp Cameras/Camera/Camera.h
+        Privitives/Lights/Light.cpp Privitives/Lights/Light.h Materials/Color.cpp Materials/Color.h Renderer/stb_image_write.h
         Privitives/Lights/PointLight.cpp Privitives/Lights/PointLight.h Renderer/JpegSaver.cpp Renderer/JpegSaver.h main.cpp
         Privitives/2D/Plane.cpp Privitives/2D/Plane.h Privitives/2D/Rectangle.cpp Privitives/2D/Rectangle.h
-        Privitives/3D/Box.cpp Privitives/3D/Box.h Math/PixelRayCollection.cpp Math/PixelRayCollection.h)
+        Privitives/3D/Box.cpp Privitives/3D/Box.h Cameras/Ray/PixelRayCollection.cpp Cameras/Ray/PixelRayCollection.h)
 
 add_executable(temp_tests_exec tests/TempTests.cpp)
 add_executable(vec3_operators_tests_exec tests/Math/Vec3/Vec3OperatorsTests.cpp)

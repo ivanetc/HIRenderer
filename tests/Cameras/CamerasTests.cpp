@@ -3,9 +3,9 @@
 //
 #include <iostream>
 #include <cassert>
-#include "../../Cameras/Camera.h"
-#include "../../Cameras/Camera.cpp"
-#include "../../Math/Ray.cpp"
+#include "../../Cameras/Camera/Camera.h"
+#include "../../Cameras/Camera/Camera.cpp"
+#include "../../Cameras/Ray/Ray.cpp"
 #include "../../Math/Vec3.cpp"
 #include "../../Privitives/Point.cpp"
 

@@ -7,7 +7,7 @@
 
 
 #include "../Point.h"
-#include "../Color.h"
+#include "../../Materials/Color.h"
 
 class Light {
     Point originalPoint_;
