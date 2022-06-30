@@ -8,7 +8,7 @@
 
 #include "RenderParams.h"
 #include "../Scene/Scene.h"
-#include "../Cameras/Camera.h"
+#include "../Cameras/Camera/Camera.h"
 
 class Renderer {
     static std::tuple<Point*, Vec3*, Primitive*> getIntersection(Scene &scene, const Camera &camera, const Ray &ray);

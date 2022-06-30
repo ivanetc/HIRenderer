@@ -4,10 +4,10 @@
 #include <iostream>
 #include "../../Privitives/3D/Sphere.cpp"
 #include "../../Privitives/Point.cpp"
-#include "../../Privitives/Color.cpp"
+#include "../../Materials/Color.cpp"
 #include "../../Privitives/Primitive.cpp"
 #include "../../Math/Vec3.cpp"
-#include "../../Math/Ray.cpp"
+#include "../../Cameras/Ray/Ray.cpp"
 #include "../../Materials/Material.cpp"
 #include <cassert>
 void test1();

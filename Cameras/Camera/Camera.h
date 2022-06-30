@@ -7,9 +7,9 @@
 
 #include <vector>
 
-#include "../Privitives/Point.h"
-#include "../Math/Ray.h"
-#include "../Math/PixelRayCollection.h"
+#include "../../Privitives/Point.h"
+#include "../Ray/Ray.h"
+#include "../Ray/PixelRayCollection.h"
 
 class Camera {
     int image_height_;

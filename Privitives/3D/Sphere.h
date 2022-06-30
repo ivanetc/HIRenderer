@@ -1,6 +1,6 @@
 #include "../../Math/Vec3.h"
 #include "../Point.h"
-#include "../../Math/Ray.h"
+#include "../../Cameras/Ray/Ray.h"
 #include "tuple"
 #include "../Primitive.h"
 

@@ -4,7 +4,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include "../Privitives/Color.h"
+#include "../Materials/Color.h"
 
 class JpegSaver{
 

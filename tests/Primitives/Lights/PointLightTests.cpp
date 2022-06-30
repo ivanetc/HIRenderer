@@ -8,7 +8,7 @@
 #include "../../../Privitives/Lights/PointLight.cpp"
 #include "../../../Privitives/Lights/Light.cpp"
 #include "../../../Privitives/Point.cpp"
-#include "../../../Privitives/Color.cpp"
+#include "../../../Materials/Color.cpp"
 #include "../../../Math/Vec3.cpp"
 
 

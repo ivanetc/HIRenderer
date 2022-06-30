@@ -5,8 +5,8 @@
 #ifndef HIRENDER_RAY_H
 #define HIRENDER_RAY_H
 
-#include "Vec3.h"
-#include "../Privitives/Point.h"
+#include "../../Math/Vec3.h"
+#include "../../Privitives/Point.h"
 
 class Ray {
 public:
