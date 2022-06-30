@@ -17,6 +17,9 @@ public:
     short getR() const;
     short getG() const;
     short getB() const;
+    void setR(char R);
+    void setG(char G);
+    void setB(char B);
     Color operator*(double c) const;
     Color operator+(Color c) const;
 };

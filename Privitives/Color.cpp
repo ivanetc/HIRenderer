@@ -34,3 +34,18 @@ Color Color::operator*(double c) const {
 Color Color::operator+(Color other) const {
     return {static_cast<short>(this->r_ + other.r_), static_cast<short>(this->g_ + other.g_), static_cast<short>(this->b_ + other.b_)};
 }
+
+void Color::setG(char G) {
+    g_ = G;
+}
+
+void Color::setR(char R) {
+    r_ = R;
+}
+
+void Color::setB(char B) {
+    b_ = B;
+}
+
+
+

@@ -25,7 +25,11 @@ std::vector< std::vector <Ray>> Camera::getRays() {
         for (int i = 0; i < image_width_; ++i) {
             float u = float(i) / float(image_width_ - 1);
             float v = float(j) / float(image_height_ - 1);
-            Vec3 * dir = lower_left_corner_ + u * horizontal_ + v * vertical_ - origin_point_;
+
+            // сгенерировать не один луч в эту точку, а 4 в точки рядышком на погрешность меньшую чем
+            // viewportHeight / imageHeight
+            Point pixelViewportPoint = lower_left_corner_ + u * horizontal_ + v * vertical_;
+            Vec3 * dir = pixelViewportPoint - origin_point_;
             Ray r = Ray(origin_point_, * dir);
             rays.at(j).at(i) = r;
         }

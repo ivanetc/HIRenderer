@@ -2,6 +2,7 @@
 // Created by Alexander Ivanets on 26.06.2022.
 //
 
+#include <exception>
 #include "Rectangle.h"
 
 Rectangle::Rectangle(Point orig, Vec3 norm, Material mat, double x, double y) : Plane(orig, norm, mat){
@@ -57,6 +58,3 @@ bool Rectangle::isPointOnRectangle(Point targetPoint) const {
 
     return projectionOnX <= x_.length() && projectionOnY <= y_.length();
 }
-
-
-

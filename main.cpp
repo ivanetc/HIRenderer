@@ -13,7 +13,7 @@ int main() {
     auto sphereMaterial = Material(Color(150, 0, 24));
     auto sphereMaterial2 = Material(Color(200, 204, 100));
     auto sphereMaterial3 = Material(Color(200, 0, 0));
-    auto rectMaterial = Material(Color(0, 200, 30));
+    auto rectMaterial = Material(Color(255, 200, 199));
 
     auto planeMaterial = Material(Color(200, 230, 201));
     auto * sphere = new Sphere(Point(-1, 0, -3.5), sphereMaterial, 0.6);
@@ -21,12 +21,12 @@ int main() {
     auto * plane = new Plane(Point(0, -2, -4), Vec3(0, 1, 0), planeMaterial);
     auto * plane2 = new Plane(Point(0, 2, 4), Vec3(0, -1, 0), sphereMaterial3);
 
-    auto * rectangle = new Rectangle(Point(0, 0, -5), Vec3(0, 0, 1), rectMaterial, 0.1, 0.1);
+    auto * rectangle = new Rectangle(Point(0, 0, -3.5), Vec3(0, 0, 1), rectMaterial, 0.1, 0.1);
 
     auto * light = new PointLight(Point(-5, 0, 1.5), Color(255, 255, 255), 620);
     scene.add(light);
-    scene.add(plane);
-    scene.add(plane2);
+    //scene.add(plane);
+    //scene.add(plane2);
     scene.add(sphere);
     scene.add(sphere2);
     scene.add(rectangle);
