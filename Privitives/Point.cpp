@@ -54,4 +54,15 @@ bool Point::isCloserToOrigin(Point origin, Point other) const {
     return isCloser;
 }
 
+void Point::setX(float x) {
+    x_ = x;
+}
+
+void Point::setY(float y) {
+    y_ = y;
+}
+
+void Point::setZ(float z) {
+    z_ = z;
+}
 

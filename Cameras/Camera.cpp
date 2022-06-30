@@ -15,7 +15,7 @@ float random(float from, float to) {
 Camera::Camera(Point origin, float aspect_ratio, int image_width, float focal_length) {
     float viewport_height = 100.0;
     origin_point_ = origin;
-    viewport_height = viewport_height;
+    viewport_height_ = viewport_height;
     viewport_width_ = aspect_ratio * viewport_height;
 
     horizontal_ = Vec3(viewport_width_, 0.0, 0.0);
@@ -30,8 +30,8 @@ Camera::Camera(Point origin, float aspect_ratio, int image_width, float focal_le
 std::vector< std::vector <PixelRayCollection>> Camera::getRays() {
     std::vector< std::vector <PixelRayCollection>> rays(this->image_height_, std::vector<PixelRayCollection>(this->image_width_));
 
-    float pixel_viewport_width = viewport_width_ / image_width_;
-    float pixel_viewport_height = viewport_height_ / image_height_;
+    float pixel_viewport_half_width = viewport_width_ / (2 * image_width_);
+    float pixel_viewport_half_height = viewport_height_ / (2 * image_height_);
 
     for (int j = image_height_ - 1; j >= 0; --j) {
         for (int i = 0; i < image_width_; ++i) {
@@ -40,9 +40,11 @@ std::vector< std::vector <PixelRayCollection>> Camera::getRays() {
             auto rayCollection = PixelRayCollection();
 
             for(int s = 0; s < samplesPerPixel; s++) {
-                u *= (1 + random(- pixel_viewport_width, pixel_viewport_width));
-                v *= (1 + random(- pixel_viewport_height, pixel_viewport_height));
+                auto rand_width_movement = random(- pixel_viewport_half_width, pixel_viewport_half_width);
+                auto rand_height_movement = random(- pixel_viewport_half_height, pixel_viewport_half_height);
                 Point pixel_center = lower_left_corner_ + u * horizontal_ + v * vertical_;
+                pixel_center.setX(pixel_center.getX() + rand_width_movement);
+                pixel_center.setY(pixel_center.getY() + rand_height_movement);
 
                 Vec3 * dir = pixel_center - origin_point_;
                 Ray r = Ray(origin_point_, * dir);

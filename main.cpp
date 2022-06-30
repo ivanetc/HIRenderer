@@ -26,14 +26,6 @@ int main() {
     Vec3 axis_y = Vec3(0, 1, 0);
     Vec3 axis_z = Vec3(0, 0, 1);
 
-    auto * rectangle = new Rectangle(
-            Point(0, 0, -3),
-            axis_z,
-            rectMaterial,
-            axis_x,
-            axis_y
-    );
-
     auto * box = new Box(
             Point(1.7, -0.8, -3),
             rectMaterial,
@@ -52,6 +44,7 @@ int main() {
 
 
     auto camera = Camera(Point(), 16.0/9, 1280, 0.1);
+    camera.samplesPerPixel = 5;
     auto pixels = Renderer::Render(scene, camera);
 
     JpegSaver::save(pixels, "test.jpg");
@@ -61,6 +54,5 @@ int main() {
     delete light;
     delete plane;
     delete plane2;
-    delete rectangle;
     delete box;
 }

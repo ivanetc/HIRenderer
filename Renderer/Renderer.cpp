@@ -7,7 +7,6 @@
 
 
 std::vector< std::vector<Color> > Renderer::Render(Scene scene, Camera camera) {
-    camera.samplesPerPixel = 10;
     auto rays = camera.getRays();
 
     int imageHeight = camera.getImageHeight();
@@ -27,7 +26,7 @@ std::vector< std::vector<Color> > Renderer::Render(Scene scene, Camera camera) {
                 g += currentPixelColor.getG();
                 b += currentPixelColor.getB();
             }
-            auto color = Color(r / camera.samplesPerPixel, g / camera.samplesPerPixel, b / camera.samplesPerPixel);
+            auto color = Color((r / camera.samplesPerPixel), (g / camera.samplesPerPixel), (b / camera.samplesPerPixel));
             pixels.at(i).at(j) = color;
         }
     }
