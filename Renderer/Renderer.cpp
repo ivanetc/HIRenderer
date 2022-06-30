@@ -13,7 +13,7 @@ std::vector< std::vector<Color> > Renderer::Render(Scene scene, Camera camera) {
     int imageWidth = camera.getImageWidth();
     std::vector< std::vector<Color> > pixels (imageHeight, std::vector<Color> (imageWidth));
     // static
-    #pragma omp parallel for schedule(dynamic)
+//    #pragma omp parallel for schedule(dynamic)
     for (int i = 0; i < rays.size(); i++)
     {
         for (int j = 0; j < rays.at(i).size(); j++) {
@@ -33,18 +33,18 @@ Color Renderer::getRayPixelColor(Scene &scene, const Camera &camera, const Ray &
         Light * mainLight = scene.getLights().at(0);
 
         // check light ray intersection with other primitives
-        //Point mainLightOrigin = mainLight->getOriginalPoint();
-        //Vec3 * rayFromLightDir = mainLightOrigin - *intersectionPoint;
-        //Ray rayFromLight = Ray(mainLightOrigin, *rayFromLightDir);
-        //auto [p, n, intersectedPrimitive] = getIntersection(scene, camera, rayFromLight);
-        //if (intersectedPrimitive == closestPrimitive || intersectedPrimitive == nullptr) {
+        Point mainLightOrigin = mainLight->getOriginalPoint();
+        Vec3 * rayFromLightDir = *intersectionPoint - mainLightOrigin;
+        Ray rayFromLight = Ray(mainLightOrigin, *rayFromLightDir);
+        auto [p, n, intersectedPrimitive] = getIntersection(scene, camera, rayFromLight);
+        if (intersectedPrimitive == closestPrimitive || intersectedPrimitive == nullptr) {
 
             // if our point on primitive, intersected with ray from camera and ray from light
             // we will calculate lightness on it
             double lightness = mainLight->calcLightness(*intersectionPoint, *intersectionPointNormal);
 
             currentPixelColor = closestPrimitive->getMaterial().getColor() * lightness;
-        //}
+        }
 
 //        delete rayFromLightDir;
     }

@@ -92,6 +92,21 @@ void all_operators_test(){
     std::cout << "Vec3OperatorsTest_8: all_operators_test completed" << std::endl;
 }
 
+void vec_rotate_tests() {
+    Vec3 vec = {1, 0, 0};
+    auto rotated = vec.rotate(0, 0, 90);
+
+    assert(rotated == Vec3(0, 1, 0));
+
+    vec = {0, 0, 1};
+    rotated = vec.rotate(0, 90, 0);
+    assert(rotated == Vec3(-1, 0, 0));
+
+    vec = {1, 0, 1};
+    rotated = vec.rotate(90, 0, 0);
+    assert(rotated == Vec3(1, -1, 0));
+}
+
 int main() {
 
     operator_plus_test();
@@ -103,6 +118,7 @@ int main() {
     int_mult_operator_test();
     float_mult_operator_test();
     all_operators_test();
+    vec_rotate_tests();
     std::cout << "Vec3OperatorsTests: tests completed successfully!" << std::endl;
 
 

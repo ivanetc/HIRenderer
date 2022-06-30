@@ -26,3 +26,7 @@ Primitive::Primitive(Point origin, Vec3 normal, Material material) : origin_(ori
 Material Primitive::getMaterial() const {
     return material_;
 }
+
+void Primitive::setOrigin(Point newOrigin) {
+    this->origin_ = newOrigin;
+}
