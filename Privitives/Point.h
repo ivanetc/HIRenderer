@@ -21,6 +21,10 @@ public:
     float getY() const;
     float getZ() const;
 
+    void setX(float);
+    void setY(float);
+    void setZ(float);
+
     bool operator==(const Point&) const;
     bool operator!=(const Point&) const;
     Vec3 * operator-(const Point&) const;
