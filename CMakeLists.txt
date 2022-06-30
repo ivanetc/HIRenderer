@@ -16,7 +16,7 @@ add_executable(
         Privitives/Lights/Light.cpp Privitives/Lights/Light.h Privitives/Color.cpp Privitives/Color.h Renderer/stb_image_write.h
         Privitives/Lights/PointLight.cpp Privitives/Lights/PointLight.h Renderer/JpegSaver.cpp Renderer/JpegSaver.h main.cpp
         Privitives/2D/Plane.cpp Privitives/2D/Plane.h Privitives/2D/Rectangle.cpp Privitives/2D/Rectangle.h
-        Privitives/3D/Box.cpp Privitives/3D/Box.h)
+        Privitives/3D/Box.cpp Privitives/3D/Box.h Math/PixelRayCollection.cpp Math/PixelRayCollection.h)
 
 add_executable(temp_tests_exec tests/TempTests.cpp)
 add_executable(vec3_operators_tests_exec tests/Math/Vec3/Vec3OperatorsTests.cpp)
